@@ -9,6 +9,7 @@ const PlayingVideo=({RelatedVideo,data,display,pagetoken})=>{
     const [scroll,setscroll]=useState(0)
     const location=useLocation()
     const {id}=location.state
+    console.log(data,"rentt")
     
     useEffect(()=>{
         RelatedVideo({'id':id,'next':pagetoken,'data':data?data:[]});
@@ -46,7 +47,9 @@ src={`https://www.youtube.com/embed/${display.id?.videoId} `}>
 </div>
             </div>
             <div className="recommend">
-               { data[0]? <VerticalList id={id} data={data} />:null}
+               { data[0]? <VerticalList 
+               id={id}
+                data={data} />:null}
             </div>
             
             

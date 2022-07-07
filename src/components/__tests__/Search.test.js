@@ -9,12 +9,15 @@ import configureStore from 'redux-mock-store';
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 const mockStore = configureStore([thunk]);
+const mockInput=jest.fn();
+const mockFetch=jest.fn();
+
 
 test('searching the field',()=>{
-  const store=mockStore();
+  const store=mockStore({search:"v"});
   render(
   <Provider store={store}>
-    <SearchField/>
+    <SearchField  input={mockInput} fetchRequest={mockFetch}  />
   </Provider>
   );
   const input=screen.getByPlaceholderText(/search by keywords/i)
