@@ -64,9 +64,9 @@ const mapdispatchtoprops=(dispatch)=>{
 
 const statetoprops=(state)=>{
     console.log(state)
-    return {data:state.VideoId.data,
-    display:state.Play.data,
-pagetoken:state.Scroll.scrollNext};
+    return {data:state.VideoId?.data,
+    display:state.Play?.data,
+pagetoken:state.Scroll?.scrollNext};
 }
 
 export default connect(statetoprops,mapdispatchtoprops)(PlayingVideo);

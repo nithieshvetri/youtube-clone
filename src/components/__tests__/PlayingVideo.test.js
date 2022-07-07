@@ -6,7 +6,14 @@ import Playingvideo from "../Playingvideo";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import configureStore from 'redux-mock-store';
+import { shallow } from "enzyme"
 
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useLocation: () => ({
+    pathname: "localhost:3000/playing"
+  })
+}));
 const mockStore = configureStore([thunk]);
 
 const MockPlaying=()=>{
@@ -19,7 +26,7 @@ const MockPlaying=()=>{
 const mockRelatedVideo=jest.fn();
 
 test('currently playing video',async()=>{
-    const store=mockStore([],{
+    const store=mockStore([{}],{
         "kind": "youtube#searchResult",
         "etag": "G8EF2-N0ySF_S-FZ2cj8W5YHoa4",
         "id": {

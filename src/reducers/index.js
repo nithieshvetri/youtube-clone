@@ -63,7 +63,7 @@ const initialRelatedVideo={data:[{
 const VideoId=(state=initialRelatedVideo,action)=>{
     switch(action.type){
         case videoId:
-            return {...state,data:action.payload}
+            return {data:action.payload}
             default:
                 return state;
     }

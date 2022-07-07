@@ -35,7 +35,7 @@ export const fetchRequest=(datas)=>{
   console.log(next,"mm",searc,"mmmmm")
     return (dispatch)=>{
       console.log("rently",next)
-        axios.get(`https://www.googleapis.com/youtube/v3/search?pageToken=${next?next:''}&part=snippet&maxResults=50&q=${searc?searc:''}&key=aAIzaSyCEWjB_U1nvSQZQr5bp_x_rm0UxSSQnnf4
+        axios.get(`https://www.googleapis.com/youtube/v3/search?pageToken=${next?next:''}&part=snippet&maxResults=50&q=${searc?searc:''}&key=AIzaSyCEWjB_U1nvSQZQr5bp_x_rm0UxSSQnnf4
 
 
 
@@ -73,7 +73,7 @@ export const RelatedVideo=(videoId)=>{
   const {id,next,data}=videoId
   console.log(next,"nithiesh")
   return  (dispatch)=>{
-    axios.get(`https://youtube.googleapis.com/youtube/v3/search?pageToken=${next?next:''}&part=snippet&maxResults=50&relatedToVideoId=${id}&type=video&key=aAIzaSyCEWjB_U1nvSQZQr5bp_x_rm0UxSSQnnf4
+    axios.get(`https://youtube.googleapis.com/youtube/v3/search?pageToken=${next?next:''}&part=snippet&maxResults=50&relatedToVideoId=${id}&type=video&key=AIzaSyCEWjB_U1nvSQZQr5bp_x_rm0UxSSQnnf4
 
 
     `)
@@ -81,7 +81,10 @@ export const RelatedVideo=(videoId)=>{
       console.log(res.data.nextPageToken,"hello welcome")
       dispatch(Scroll(res.data.nextPageToken))
 const concat=[...data,...res.data.items]
-      dispatch(RelatedVideoSuccess(concat))})
+if(next==""){
+  dispatch(RelatedVideoSuccess(res.data.items))
+}else{
+      dispatch(RelatedVideoSuccess(concat))}})
     .catch(err=>{console.log(err)
     alert("an error has been occured")})
     

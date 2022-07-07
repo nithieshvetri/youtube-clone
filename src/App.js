@@ -15,9 +15,9 @@ const App = () => {
     <ErroBoundary>
       <Provider store={createStore(RootReducer, applyMiddleware(thunk))}>
         <BrowserRouter>
-          <Header />
+          {/* <Header /> */}
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<Header />} />
             <Route path="/playing" element={<PlayingVideo />} />
 
             <Route path="/*" element={<div className="not-found"><h1>the page you requestedn is not found</h1>

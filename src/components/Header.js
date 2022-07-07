@@ -17,6 +17,7 @@ import { useState } from 'react';
 
 import SearchField from './Search';
 import logo from '../images/logo.png'
+import Homepage from './Homepage';
 const clientId = "822787173000-29pc1e5rkkla5bmbc6iqv3udfl67nsj9.apps.googleusercontent.com";
 
 // const Search = styled('div')(({ theme }) => ({
@@ -220,7 +221,8 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+<>
+<Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" display='flex'>
         <Toolbar>
         
@@ -269,5 +271,7 @@ export default function PrimarySearchAppBar() {
       {renderMobileMenu}
       {renderMenu}
     </Box>
+    {showlogoutButton?<Homepage />:<p>please</p>}
+</>
   );
 }
