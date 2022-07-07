@@ -1,0 +1,9 @@
+export const success='success'
+export const request='request'
+export const failure='failure'
+export const input='input'
+export const videoId='videoId'
+export const requestError='requestError'
+export const infinite='infinite';
+export const play='play';
+export const scroll='scroll';

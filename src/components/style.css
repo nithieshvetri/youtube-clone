@@ -1,0 +1,151 @@
+*{padding:0px;
+margin:0px;
+box-sizing: border-box;}
+body{
+    background-color: rgb(101, 96, 96);
+    font-family: Arial, Helvetica, sans-serif;
+color:white}
+
+.header-image{
+object-fit: contain;
+width: 40%;
+}
+
+.home-content{
+    color:white;
+    /* background-color:black; */
+}
+
+.card{
+    cursor:pointer;
+    background-color:black;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    border: 0.1px solid lightgrey;
+    border-radius: 8px;
+    padding: 10px;
+    text-align:left;
+}
+.youtube-play{
+    display:flex;
+    flex-direction: row;
+    column-gap: 25px;
+    justify-content:center;
+    margin:6%;
+}
+.video{
+    flex:3;
+    position:static;
+}
+.recommend{
+    flex:2;
+}
+.vertical-list{
+    display:flex;
+    cursor:pointer;
+    flex-direction: row;
+    column-gap: 35px;
+    row-gap:50px;
+    /* margin:20px 0px; */
+    min-height:150px;
+    background-color: black;;
+    margin-bottom:20px;
+}
+.vertical-list-image{
+    /* width:fit-content; */
+    height:140px;
+    padding:0px;
+    object-fit:cover;
+}
+.video{width:90%;
+height:65vh;
+}
+.video iframe{
+    width:100%;
+    height:90%;
+}
+.vertical-list-content{
+    padding:10px;
+    display:flex;
+    flex-direction:column;
+    
+    /* row-gap:25px; */
+    /* height:100px; */
+    align-content: center;
+    align-items: flex-end;
+    /* justify-content:flex-start; */
+
+}
+.vertical-list-content p{
+    align-self: flex-start;
+    align-items: center;
+    padding:5px 0px;
+}
+.search-input{
+    padding:15px;
+    width:35%;
+}
+h1{
+    padding:15px;
+}
+.search-input input{
+    width:100%;
+    height:33px;
+    border-radius: 5px;
+    padding-left:5px;
+    border:none;
+    color:black;
+    background-color: white;
+    text-overflow:ellipsis;
+}
+.loader{
+    display: flex;
+    justify-content: center;
+   margin: 10% 0%;
+}
+.profile{
+    border-radius:50%;
+    width:40px;
+    height:30px;
+}
+.video-details{
+    padding:5px;
+    margin:10px;
+    font-size:medium;
+    
+}
+.video-details h3,h4{
+    padding:5px;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+.not-found{
+    display:flex;
+    flex-direction:column;
+    min-height:90vh;
+    justify-content: center;
+    align-items: center;
+}
+.not-found a{
+    color:blue;
+    padding:10px;
+}
+
+.username{
+    color:black;
+    font-size:large;
+}
+@media only screen and (max-width: 900px) {
+    .youtube-play{
+        display:block;}
+        .video{width:90%;
+            min-height:55vh;
+            }
+            .search-input{
+                padding:15px;
+                width:85%;
+            }
+}
+
