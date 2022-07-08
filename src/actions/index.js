@@ -34,8 +34,8 @@ export const fetchRequest=(datas)=>{
   const {searc,next,data}=datas
   console.log(next,"mm",searc,"mmmmm")
     return (dispatch)=>{
-      console.log("rently",next)
-        axios.get(`https://www.googleapis.com/youtube/v3/search?pageToken=${next?next:''}&part=snippet&maxResults=50&q=${searc?searc:''}&key=AIzaSyCEWjB_U1nvSQZQr5bp_x_rm0UxSSQnnf4
+      console.log("rently",next,searc,data)
+        axios.get(`https://www.googleapis.com/youtube/v3/search?pageToken=${next?next:''}&part=snippet&maxResults=50&q=${searc?searc:''}&key=AIzaSyBHP0RfKIttIjlGxd2D1o8EvZKF9K3HaxI
 
 
 
@@ -47,8 +47,11 @@ export const fetchRequest=(datas)=>{
         .then ((res=>
           {          const concat=[...data,...res.data.items]
             console.log(res.data.nextPageToken,"hello")
-
-            dispatch(userSuccess(searc?res.data.items:concat))
+            if(next=="" && (searc=="" || !searc=="")){
+              dispatch(userSuccess(res.data.items))
+            }else if((!searc=="" && !next=="")|| (searc=="" && !next=="")) {
+                  dispatch(userSuccess(concat))}
+            // dispatch(userSuccess(searc?res.data.items:concat))
         dispatch(Infinite(res.data.nextPageToken))
         }))
         .catch(error=>dispatch(requestError(error)))
@@ -73,7 +76,7 @@ export const RelatedVideo=(videoId)=>{
   const {id,next,data}=videoId
   console.log(next,"nithiesh")
   return  (dispatch)=>{
-    axios.get(`https://youtube.googleapis.com/youtube/v3/search?pageToken=${next?next:''}&part=snippet&maxResults=50&relatedToVideoId=${id}&type=video&key=AIzaSyCEWjB_U1nvSQZQr5bp_x_rm0UxSSQnnf4
+    axios.get(`https://youtube.googleapis.com/youtube/v3/search?pageToken=${next?next:''}&part=snippet&maxResults=50&relatedToVideoId=${id}&type=video&key=AIzaSyBHP0RfKIttIjlGxd2D1o8EvZKF9K3HaxI
 
 
     `)

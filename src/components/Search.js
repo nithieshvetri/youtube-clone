@@ -1,10 +1,13 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { connect } from "react-redux";
-import {  Input,fetchRequest } from "../actions";
+import {  Input,fetchRequest,Infinite } from "../actions";
 
 
-const SearchField=({Input,searc,fetchRequest})=>{
+const SearchField=({Input,searc,infinite,fetchRequest})=>{
 
+    useEffect(()=>{
+        infinite("")
+    },[searc.search])
 
     return (
         <div className="search-input"><input name="search-input" type="text" placeholder="search by keywords" onChange={e=>{Input(e.target.value);
@@ -15,7 +18,8 @@ const SearchField=({Input,searc,fetchRequest})=>{
 }
 const mapdispatchtoprops=(dispatch)=>{
     return {Input:(input)=>dispatch(Input(input)),
-    fetchRequest:(searchquery)=>dispatch(fetchRequest(searchquery))}
+    fetchRequest:(searchquery)=>dispatch(fetchRequest(searchquery)),
+infinite:(next)=>dispatch(Infinite(next))}
 }
 
 const statetoprops=(state)=>{

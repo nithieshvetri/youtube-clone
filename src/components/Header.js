@@ -249,7 +249,7 @@ export default function PrimarySearchAppBar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              {userName?<p className="username">Welcome {userName} </p>:null}
+              {userName?<p className="username"> {userName} </p>:null}
             {profile && userName?<>
             <img className="profile" src={profile} alt="profile" /> </>  :<AccountCircle />}
            </IconButton>

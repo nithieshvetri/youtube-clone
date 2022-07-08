@@ -2,15 +2,17 @@ import React,{useState,useEffect} from "react";
 import { connect } from "react-redux";
 
 import { useLocation } from "react-router-dom";
-import {RelatedVideo} from '../actions';
+import {RelatedVideo,Infinite} from '../actions';
 import VerticalList from "./VerticalList";
 
-const PlayingVideo=({RelatedVideo,data,display,pagetoken})=>{
+const PlayingVideo=({RelatedVideo,infinite,data,display,pagetoken})=>{
     const [scroll,setscroll]=useState(0)
     const location=useLocation()
     const {id}=location.state
-    console.log(data,"rentt")
-    
+    console.log(pagetoken,"rentt")
+    useEffect(()=>{
+        infinite("")
+    })
     useEffect(()=>{
         RelatedVideo({'id':id,'next':pagetoken,'data':data?data:[]});
         setscroll(0)
@@ -59,14 +61,16 @@ src={`https://www.youtube.com/embed/${display.id?.videoId} `}>
 }
 
 const mapdispatchtoprops=(dispatch)=>{
-    return {RelatedVideo:(id)=>dispatch(RelatedVideo(id))}
+    return {RelatedVideo:(id)=>dispatch(RelatedVideo(id)),
+    infinite:(next)=>dispatch(Infinite(next))}
 }
 
 const statetoprops=(state)=>{
     console.log(state)
     return {data:state.VideoId?.data,
     display:state.Play?.data,
-pagetoken:state.Scroll?.scrollNext};
+pagetoken:state.Scroll?.scrollNext
+};
 }
 
 export default connect(statetoprops,mapdispatchtoprops)(PlayingVideo);
