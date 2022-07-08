@@ -1,48 +1,20 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
+
 import { BrowserRouter } from "react-router-dom";
-import Playingvideo from "../Playingvideo";
+import VerticalList from "../VerticalList";
+import configureStore from 'redux-mock-store';
+
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-import configureStore from 'redux-mock-store';
-import Enzyme,{ shallow } from "enzyme"
-import Adapter from 'enzyme-adapter-preact-pure';
-
-// import Adapter from 'enzyme-adapter';
-// jest.mock("react-router-dom", () => ({
-//   ...jest.requireActual("react-router-dom"),
-//   useLocation: () => ({
-//     pathname: "/playing"
-//   })
-// }));
-Enzyme.configure({ adapter: new Adapter() });
-
-
-const mockHistoryPush = jest.fn();
-jest.mock('react-router-dom', () => ({
-    ...jest.requireActual('react-router-dom'),
-    useHistory: () => ({
-        push: mockHistoryPush,
-    }),
-    useLocation: () => ({
-        pathname: "/playing"
-    })
-}));
-
 const mockStore = configureStore([thunk]);
-
-const MockPlaying=()=>{
-    return (
-        <BrowserRouter>
-        <Playingvideo  />
-        </BrowserRouter>
-    )
-}
-const mockRelatedVideo=jest.fn();
-
-test('currently playing video',async()=>{
-    const store=mockStore([],{
+const MockPlay=jest.fn();
+test("vertical list",async()=>{
+    const store=mockStore();
+  render(
+      <BrowserRouter>  <Provider store={store}>
+    <VerticalList  data={[{
         "kind": "youtube#searchResult",
         "etag": "G8EF2-N0ySF_S-FZ2cj8W5YHoa4",
         "id": {
@@ -74,10 +46,19 @@ test('currently playing video',async()=>{
           "channelTitle": "Entri App മലയാളം",
           "liveBroadcastContent": "none",
           "publishTime": "2020-10-14T08:58:59Z",
-        }},"")
-    shallow(<Provider store={store}>
-        <MockPlaying  RelatedVideo={mockRelatedVideo} />
-    </Provider>);
-    const element=screen.findAllByRole('paragraph');
-    expect(element).toBeInTheDocument();
+    }}]} play={MockPlay}  />
+  </Provider>
+  </BrowserRouter>
+
+  );
+  // const click=screen.getByTestId("click")
+const text=screen.getByText('Entri App മലയാളം')
+
+  // const inputElement = screen.getByText;
+  expect(text).toBeInTheDocument();
+
+  const Clickevent=screen.getByTestId('click')
+
+  // const inputElement = screen.getByText;
+  expect(Clickevent).toBeInTheDocument();
 })

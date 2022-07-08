@@ -8,7 +8,7 @@ const VerticalList=({data,play})=>{
     const display=data[0]?data.map((x,index)=>{
         return (
             <div   key={index}>
-               {x.snippet ? < div  className="vertical-list" onClick={()=>play(x)} >
+               {x.snippet ? < div data-testid="click" className="vertical-list" onClick={()=>play(x)} >
                 <img className="vertical-list-image" src={x?.snippet?.thumbnails.high.url} alt="thumbnails" />
                 <div className="vertical-list-content">
                     <p>{x.snippet.title?x.snippet.title:null}</p>

@@ -234,7 +234,7 @@ export default function PrimarySearchAppBar() {
           >
             <img className="header-image" src={logo} alt="youtube"/>
           </Typography>
-           <SearchField />
+{showlogoutButton?           <SearchField />:null}
 
           <Box sx={{ flexGrow: 1 }} />
          
@@ -271,7 +271,17 @@ export default function PrimarySearchAppBar() {
       {renderMobileMenu}
       {renderMenu}
     </Box>
-    {showlogoutButton?<Homepage />:<p>please</p>}
+    {showlogoutButton?<Homepage />:<div className='loader' onClick={handleMenuClose}>
+                <GoogleLogin
+                    clientId={clientId}
+                    buttonText="Sign In"
+                    onSuccess={onLoginSuccess}
+                    onFailure={onLoginFailure}
+                    cookiePolicy={'single_host_origin'}
+                    isSignedIn={true}
+                />
+                </
+                div>}
 </>
   );
 }
