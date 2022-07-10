@@ -3,18 +3,19 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 import { BrowserRouter } from "react-router-dom";
-import VerticalList from "../VerticalList";
 import configureStore from 'redux-mock-store';
-
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
+import Structure from "../Structure";
 const mockStore = configureStore([thunk]);
 const MockPlay=jest.fn();
-test("vertical list",async()=>{
+const Mockfetch=jest.fn();
+const MockScroll=jest.fn();
+test("structure",async()=>{
     const store=mockStore();
   render(
       <BrowserRouter>  <Provider store={store}>
-    <VerticalList  data={[{
+    <Structure  data={[{
         "kind": "youtube#searchResult",
         "etag": "G8EF2-N0ySF_S-FZ2cj8W5YHoa4",
         "id": {
@@ -46,17 +47,15 @@ test("vertical list",async()=>{
           "channelTitle": "Entri App മലയാളം",
           "liveBroadcastContent": "none",
           "publishTime": "2020-10-14T08:58:59Z",
-    }}]} play={MockPlay}  />
+    }}]} play={MockPlay} scroll={MockScroll} fetch={Mockfetch}  />
   </Provider>
   </BrowserRouter>
 
   );
-  // const click=screen.getByTestId("click")
-const text=screen.getByText('Entri App മലയാളം')
+// const text=screen.getByText('rer')
 
-  expect(text).toBeInTheDocument();
+  // expect(text).toBeInTheDocument();
 
-  // const Clickevent=screen.getByTestId('click')
 
-  // expect(Clickevent).toBeInTheDocument();
+  
 })

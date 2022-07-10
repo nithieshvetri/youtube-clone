@@ -15,9 +15,8 @@ import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { useNavigate,Link } from 'react-router-dom';
 import { useState } from 'react';
 
-import SearchField from './Search';
 import logo from '../images/logo.png'
-import Homepage from './Homepage';
+import PlayingVideo from './Playingvideo';
 const clientId = "822787173000-29pc1e5rkkla5bmbc6iqv3udfl67nsj9.apps.googleusercontent.com";
 
 
@@ -44,7 +43,12 @@ export default function PrimarySearchAppBar() {
   };
 
 
- 
+  // const onSignoutSuccess = () => {
+  //     alert("You have been logged out successfully");
+  //     console.clear();
+  //     setShowloginButton(true);
+  //     setShowlogoutButton(false);
+  // };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -120,10 +124,11 @@ export default function PrimarySearchAppBar() {
 
                 ></GoogleLogout>
                </div>:null
-                  
+                  // </GoogleLogout> : null
 
             }
-      
+      {/* <MenuItem onClick={handleMenuClose}>Profile</MenuItem> */}
+      {/* <MenuItem onClick={handleMenuClose}>Sign Out</MenuItem> */}
     </Menu>
   );
 
@@ -159,7 +164,6 @@ export default function PrimarySearchAppBar() {
                 />
                 </
                 div> : null}
-         
         { showlogoutButton ?
                <div onClick={handleMenuClose}>
                   <GoogleLogout
@@ -188,7 +192,7 @@ export default function PrimarySearchAppBar() {
           >
             <img className="header-image" src={logo} alt="youtube"/>
           </Typography>
-{showlogoutButton?           <SearchField />:null}
+{/* {showlogoutButton?           <SearchField />:null} */}
 
           <Box sx={{ flexGrow: 1 }} />
          
@@ -225,15 +229,8 @@ export default function PrimarySearchAppBar() {
       {renderMobileMenu}
       {renderMenu}
     </Box>
-    {showlogoutButton?<Homepage />:<div className='loader' onClick={handleMenuClose}>
-                <GoogleLogin
-                    clientId={clientId}
-                    buttonText="Sign In"
-                    onSuccess={onLoginSuccess}
-                    onFailure={onLoginFailure}
-                    cookiePolicy={'single_host_origin'}
-                    isSignedIn={true}
-                />
+    {showlogoutButton?<PlayingVideo />:<div className='loader' onClick={handleMenuClose}>
+                <p><Link to='/' >please go to home page and signin</Link></p>
                 </
                 div>}
 </>

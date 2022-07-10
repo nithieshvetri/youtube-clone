@@ -10,7 +10,7 @@ class ErroBoundary extends Component {
   }
   render() {
     if (this.state.error) {
-      return <h1>something is wrong</h1>;
+      return <h1 style={{textAlign:'center'}}>something is wrong please refresh the page</h1>;
     } else {
       return this.props.children;
     }

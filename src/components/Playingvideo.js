@@ -39,7 +39,7 @@ const PlayingVideo=({RelatedVideo,infinite,data,display,pagetoken})=>{
         <div className="youtube-play">
             <div className="video">
             <iframe 
-src={`https://www.youtube.com/embed/${display.id?.videoId} `}>
+src={`https://www.youtube.com/embed/${display.id?.videoId}  `}>
 </iframe>
 <br/>
 <div className="video-details">

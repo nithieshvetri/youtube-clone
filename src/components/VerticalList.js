@@ -1,5 +1,5 @@
 import React from "react";
-import {RelatedVideo} from '../actions';
+// import {RelatedVideo} from '../actions';
 import {Play} from '../actions'
 import { connect } from "react-redux";
 
